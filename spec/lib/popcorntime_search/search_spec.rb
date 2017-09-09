@@ -57,13 +57,30 @@ RSpec.describe PopcorntimeSearch::Search do
     end
 
     context 'when results were found' do
-      it 'should return instances of SearchResult' do
-        stub_request(:get, "#{base_uri}/shows/1")
-          .with(query: { keywords: 'game of thrones' })
-          .to_return(File.new('spec/support/http_stubs/movie_search.http'))
+      context 'and the results are movies' do
+        it 'should return instances of MovieResult' do
+          stub_request(:get, "#{base_uri}/movies/1")
+            .with(query: { keywords: 'the godfather' })
+            .to_return(File.new('spec/support/http_stubs/movie_search.http'))
 
-        expect(subject.results.count).to eq 3
-        expect(subject.results.first).to be_a PopcorntimeSearch::SearchResult
+          expect(movie_search.results.count).to eq 3
+          expect(movie_search.results.first).to be_a PopcorntimeSearch::MovieResult
+        end
+      end
+
+      context 'and the results are shows' do
+        it 'should return instances of ShowResult' do
+          stub_request(:get, "#{base_uri}/shows/1")
+            .with(query: { keywords: 'game of thrones' })
+            .to_return(File.new('spec/support/http_stubs/show_search.http'))
+
+          result = subject.results.first
+
+          expect(subject.results.count).to eq 1
+          expect(result).to be_a PopcorntimeSearch::ShowResult
+          expect(result.season).to  eq 6
+          expect(result.episode).to eq 3
+        end
       end
     end
 

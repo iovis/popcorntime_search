@@ -20,7 +20,12 @@ module PopcorntimeSearch
 
     def results
       @results ||= self.class.get("/#{@kind}s/1", query: { keywords: @title }).map do |result|
-        SearchResult.new(result)
+        case @kind
+        when :movie
+          MovieResult.new(result)
+        when :show
+          ShowResult.new(result, @season, @episode)
+        end
       end
     end
 
