@@ -58,10 +58,10 @@ RSpec.describe PopcorntimeSearch::Search do
             .with(query: { keywords: 'game of thrones' })
             .to_return(File.new('spec/support/http_stubs/show_search.http'))
 
-          result = subject.results.first
-
           expect(subject.results.count).to eq 1
-          expect(result).to be_a PopcorntimeSearch::ShowResult
+          expect(subject.results).to all be_a PopcorntimeSearch::ShowResult
+
+          result = subject.results.first
           expect(result.season).to  eq 6
           expect(result.episode).to eq 3
         end
