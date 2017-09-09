@@ -9,4 +9,6 @@ require 'pry'
 include FactoryGirl::Syntax::Methods
 FactoryGirl.find_definitions
 
+search = build(:search)
+
 Pry.start
