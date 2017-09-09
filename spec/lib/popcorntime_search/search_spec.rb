@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 RSpec.describe PopcorntimeSearch::Search do
+  let(:base_uri)     { 'https://tv-v2.api-fetch.website' }
+  let(:show_search)  { build(:search) }
+  let(:movie_search) { build(:search, :movie) }
+
   describe 'when passed a search string' do
     it_behaves_like 'a search',
                     'Game of Thrones S06E03',
@@ -33,5 +37,23 @@ RSpec.describe PopcorntimeSearch::Search do
     it_behaves_like 'a search',
                     'terminator 2',
                     'terminator 2', nil, nil, :movie
+  end
+
+  describe '#links' do
+    context 'when searching for a TV show' do
+      it 'should request the shows api' do
+        request = stub_request(:get, "#{base_uri}/shows/1").with(query: { keywords: 'game of thrones' })
+        show_search.links
+        expect(request).to have_been_made.once
+      end
+    end
+
+    context 'when searching for a movie' do
+      it 'should request the shows api' do
+        request = stub_request(:get, "#{base_uri}/movies/1").with(query: { keywords: 'the godfather' })
+        movie_search.links
+        expect(request).to have_been_made.once
+      end
+    end
   end
 end

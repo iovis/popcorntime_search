@@ -1,5 +1,10 @@
+require 'httparty'
+
 module PopcorntimeSearch
   class Search
+    include HTTParty
+    base_uri 'https://tv-v2.api-fetch.website'.freeze
+
     attr_accessor :title, :season, :episode, :kind
 
     def initialize(search)
@@ -11,6 +16,10 @@ module PopcorntimeSearch
       @episode = episode.to_i if episode
 
       @kind = @season && @episode ? :show : :movie
+    end
+
+    def links
+      self.class.get("/#{@kind}s/1", query: { keywords: @title })
     end
   end
 end
