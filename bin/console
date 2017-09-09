@@ -1,14 +1,12 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "popcorntime_search"
+require 'bundler/setup'
+require 'factory_girl'
+require 'popcorntime_search'
+require 'pry'
 
-# You can add fixtures and/or initialization code here to make experimenting
-# with your gem easier. You can also use a different console, if you like.
+# Init
+include FactoryGirl::Syntax::Methods
+FactoryGirl.find_definitions
 
-# (If you use this, don't forget to add pry to your Gemfile!)
-# require "pry"
-# Pry.start
-
-require "irb"
-IRB.start(__FILE__)
+Pry.start
