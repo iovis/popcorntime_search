@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 RSpec.describe PopcorntimeSearch::Search do
-  let(:base_uri)     { 'https://tv-v2.api-fetch.website' }
-  let(:movie_search) { build(:search, :movie) }
   subject            { build(:search) }
+  let(:movie_search) { build(:search, :movie) }
+  let(:base_uri)     { PopcorntimeSearch::BASE_URL }
 
   describe 'when passed a search string' do
     it_behaves_like 'a search',

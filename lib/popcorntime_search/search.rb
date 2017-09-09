@@ -3,7 +3,7 @@ require 'httparty'
 module PopcorntimeSearch
   class Search
     include HTTParty
-    base_uri 'https://tv-v2.api-fetch.website'.freeze
+    base_uri BASE_URL
 
     attr_accessor :title, :season, :episode, :kind
 
