@@ -37,11 +37,19 @@ RSpec.describe PopcorntimeSearch::Search do
                     'Frasier', 1, 6
 
     it_behaves_like 'a search',
-                    'Mr. Robot S02E01 720p WEBRip AAC2 0 H 264-KNiTTiNG[ettv].mkv',
+                    'Mr. Robot S02E01',
                     'Mr. Robot', 2, 1
 
     it_behaves_like 'a search',
-                    "It's Always Sunny in Philadelphia s04e01 - Mac & Dennis Manhunters.avi",
+                    "It's Always Sunny in Philadelphia s04e01",
                     "It's Always Sunny in Philadelphia", 4, 1
+
+    it_behaves_like 'a search',
+                    'The Godfather II',
+                    'The Godfather II', nil, nil
+
+    it_behaves_like 'a search',
+                    'terminator 2',
+                    'terminator 2', nil, nil
   end
 end
