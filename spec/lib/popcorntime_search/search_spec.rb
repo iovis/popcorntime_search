@@ -40,22 +40,6 @@ RSpec.describe PopcorntimeSearch::Search do
   end
 
   describe '#results' do
-    context 'when searching for a TV show' do
-      it 'should request the shows api' do
-        request = stub_request(:get, "#{base_uri}/shows/1").with(query: { keywords: 'game of thrones' })
-        subject.results
-        expect(request).to have_been_made.once
-      end
-    end
-
-    context 'when searching for a movie' do
-      it 'should request the shows api' do
-        request = stub_request(:get, "#{base_uri}/movies/1").with(query: { keywords: 'the godfather' })
-        movie_search.results
-        expect(request).to have_been_made.once
-      end
-    end
-
     context 'when results were found' do
       context 'and the results are movies' do
         it 'should return instances of MovieResult' do
