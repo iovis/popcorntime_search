@@ -18,8 +18,8 @@ module PopcorntimeSearch
       @kind = @season && @episode ? :show : :movie
     end
 
-    def links
-      self.class.get("/#{@kind}s/1", query: { keywords: @title })
+    def results
+      @results ||= self.class.get("/#{@kind}s/1", query: { keywords: @title })
     end
   end
 end
