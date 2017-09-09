@@ -3,6 +3,8 @@ require 'popcorntime_search'
 require 'webmock/rspec'
 require 'factory_girl'
 
+Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
+
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   FactoryGirl.find_definitions
