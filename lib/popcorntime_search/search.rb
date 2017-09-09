@@ -3,7 +3,7 @@ module PopcorntimeSearch
     attr_accessor :title, :season, :episode, :kind
 
     def initialize(search)
-      @title   = search[SHOWNAME_REGEXP, :showname].strip
+      @title   = search[TITLE_REGEXP, :showname].strip
 
       season   = search[SEASON_EPISODE_REGEXP, :season]
       episode  = search[SEASON_EPISODE_REGEXP, :episode]
