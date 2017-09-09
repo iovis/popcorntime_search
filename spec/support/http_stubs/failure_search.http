@@ -1,0 +1,24 @@
+HTTP/1.1 200 OK
+Date: Sat, 09 Sep 2017 15:28:43 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 452
+Connection: close
+X-Powered-By: Express
+ETag: W/"1c4-QCKBR2ScG66gFIVi0ubGAw"
+X-Response-Time: 4.906ms
+Vary: Accept-Encoding
+X-Varnish: 259327564
+Age: 0
+Via: 1.1 varnish-v4
+Accept-Ranges: bytes
+Expires: Sat, 16 Sep 2017 15:28:43 GMT
+Cache-Control: max-age=604800
+Strict-Transport-Security: max-age=63072000; preload
+Access-Control-Allow-Origin: *
+Strict-Transport-Security: max-age=15638400
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Server: cloudflare-nginx
+CF-RAY: 39bb2dcebada6200-LIS
+
+[]

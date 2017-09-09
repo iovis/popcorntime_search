@@ -1,0 +1,24 @@
+HTTP/1.1 200 OK
+Date: Sat, 09 Sep 2017 15:29:36 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 456
+Connection: close
+X-Powered-By: Express
+ETag: W/"1c8-i7LsaKQrtJsXal/J/rcYtA"
+X-Response-Time: 13.111ms
+Vary: Accept-Encoding
+X-Varnish: 259105482
+Age: 0
+Via: 1.1 varnish-v4
+Accept-Ranges: bytes
+Expires: Sat, 16 Sep 2017 15:29:36 GMT
+Cache-Control: max-age=604800
+Strict-Transport-Security: max-age=63072000; preload
+Access-Control-Allow-Origin: *
+Strict-Transport-Security: max-age=15638400
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Server: cloudflare-nginx
+CF-RAY: 39bb2f18fec4548c-MAD
+
+[{"_id":"tt0944947","imdb_id":"tt0944947","tvdb_id":"121361","title":"Game of Thrones","year":"2011","slug":"game-of-thrones","num_seasons":6,"images":{"poster":"http://image.tmdb.org/t/p/w500/jIhL6mlT7AblhbHJgEoiBIOUVl1.jpg","fanart":"http://image.tmdb.org/t/p/w500/gX8SYlnL9ZznfZwEH4KJUePBFUM.jpg","banner":"http://image.tmdb.org/t/p/w500/jIhL6mlT7AblhbHJgEoiBIOUVl1.jpg"},"rating":{"percentage":94,"watching":204,"votes":63619,"loved":100,"hated":100}}]

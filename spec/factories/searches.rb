@@ -6,5 +6,9 @@ FactoryGirl.define do
     trait :movie do
       search 'the godfather'
     end
+
+    trait :failure do
+      search 'asdfgasdfgasdfghsdfg'
+    end
   end
 end

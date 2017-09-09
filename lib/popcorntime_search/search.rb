@@ -21,5 +21,11 @@ module PopcorntimeSearch
     def results
       @results ||= self.class.get("/#{@kind}s/1", query: { keywords: @title })
     end
+
+    def results_found?
+      @results_found ||= results.count > 0
+    rescue SocketError
+      @results_found = false
+    end
   end
 end

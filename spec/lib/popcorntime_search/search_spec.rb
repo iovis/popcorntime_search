@@ -56,4 +56,36 @@ RSpec.describe PopcorntimeSearch::Search do
       end
     end
   end
+
+  describe '#results_found?' do
+    context 'with a socket error' do
+      it 'should return false' do
+        stub_request(:get, "#{base_uri}/shows/1")
+          .with(query: { keywords: 'game of thrones' })
+          .to_raise(SocketError)
+
+        expect(subject).not_to be_results_found
+      end
+    end
+
+    context 'with no results found' do
+      it 'should return false' do
+        stub_request(:get, "#{base_uri}/shows/1")
+          .with(query: { keywords: 'game of thrones' })
+          .to_return(File.new('spec/support/http_stubs/failure_search.http'))
+
+        expect(subject).not_to be_results_found
+      end
+    end
+
+    context 'with results found' do
+      it 'should return true' do
+        stub_request(:get, "#{base_uri}/shows/1")
+          .with(query: { keywords: 'game of thrones' })
+          .to_return(File.new('spec/support/http_stubs/show_search.http'))
+
+        expect(subject).to be_results_found
+      end
+    end
+  end
 end
