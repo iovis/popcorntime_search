@@ -55,6 +55,27 @@ RSpec.describe PopcorntimeSearch::Search do
         expect(request).to have_been_made.once
       end
     end
+
+    context 'when results were found' do
+      it 'should return instances of SearchResult' do
+        stub_request(:get, "#{base_uri}/shows/1")
+          .with(query: { keywords: 'game of thrones' })
+          .to_return(File.new('spec/support/http_stubs/movie_search.http'))
+
+        expect(subject.results.count).to eq 3
+        expect(subject.results.first).to be_a PopcorntimeSearch::SearchResult
+      end
+    end
+
+    context 'when no results were found' do
+      it 'should return an empty list' do
+        stub_request(:get, "#{base_uri}/shows/1")
+          .with(query: { keywords: 'game of thrones' })
+          .to_return(File.new('spec/support/http_stubs/failure_search.http'))
+
+        expect(subject.results).to be_empty
+      end
+    end
   end
 
   describe '#results_found?' do

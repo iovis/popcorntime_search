@@ -19,7 +19,9 @@ module PopcorntimeSearch
     end
 
     def results
-      @results ||= self.class.get("/#{@kind}s/1", query: { keywords: @title })
+      @results ||= self.class.get("/#{@kind}s/1", query: { keywords: @title }).map do |result|
+        SearchResult.new(result)
+      end
     end
 
     def results_found?
