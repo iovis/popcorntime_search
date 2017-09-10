@@ -24,6 +24,7 @@ module PopcorntimeSearch
       episode_links['torrents'].each_with_object([]) do |(quality, info), links_list|
         next if quality == '0'
         links_list << Link.new(title: "#{@title} #{@season}x#{@episode.to_s.rjust(2, '0')}",
+                               imdb_id: imdb_id,
                                magnet: info['url'],
                                seeders: info['seeds'],
                                leechers: info['peers'],

@@ -29,6 +29,7 @@ module PopcorntimeSearch
       self.class.get("/#{@imdb_id}")['torrents'].each_with_object([]) do |(language, links), links_list|
         links.each do |quality, info|
           links_list << Link.new(title: @title,
+                                 imdb_id: imdb_id,
                                  size: info['filesize'],
                                  magnet: info['url'],
                                  seeders: info['seed'],

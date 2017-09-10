@@ -2,11 +2,12 @@ require 'cgi'
 
 module PopcorntimeSearch
   class Link
-    attr_accessor :title, :size, :magnet, :seeders, :leechers, :language, :quality, :provider
+    attr_accessor :title, :imdb_id, :size, :magnet, :seeders, :leechers, :language, :quality, :provider
     attr_writer :filename
 
-    def initialize(title:, filename: nil, size: nil, magnet:, seeders:, leechers:, language:, quality:, provider:)
+    def initialize(title:, imdb_id:, filename: nil, size: nil, magnet:, seeders:, leechers:, language:, quality:, provider:)
       @title    = title
+      @imdb_id  = imdb_id
       @filename = filename
       @size     = size
       @magnet   = magnet
