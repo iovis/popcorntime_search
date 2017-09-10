@@ -35,6 +35,21 @@ begin
     exit
   end
 
+  search = PopcorntimeSearch::Search.new(options[:search])
+
+  unless search.results_found?
+    say 'No results found'.red
+    exit
+  end
+
+  # If there are several matches, choose the appropriate one
+  say "Search results for #{options[:search].blue}:".yellow
+  result = choose(*search.results) do |menu|
+    menu.default = '1'
+    menu.select_by = :index_or_name
+  end
+
+  say result
 rescue Interrupt, EOFError
   say 'Interrupted!'.red
 rescue SocketError
