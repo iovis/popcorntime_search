@@ -42,11 +42,16 @@ begin
     exit
   end
 
-  # If there are several matches, choose the appropriate one
-  say "Search results for #{options[:search].blue}:".yellow
-  result = choose(*search.results) do |menu|
-    menu.default = '1'
-    menu.select_by = :index_or_name
+  # If 'auto' or only one result, pick the first/only one
+  if options[:auto] || search.results.one?
+    result = search.results.first
+  else
+    # If there are several matches, choose the appropriate one
+    say "Search results for #{options[:search].blue}:".yellow
+    result = choose(*search.results) do |menu|
+      menu.default = '1'
+      menu.select_by = :index_or_name
+    end
   end
 
   say result
