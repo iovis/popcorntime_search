@@ -1,3 +1,5 @@
+require 'cgi'
+
 module PopcorntimeSearch
   class Link
     attr_accessor :title, :size, :magnet, :seeders, :leechers, :language, :quality, :provider
