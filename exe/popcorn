@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+require 'popcorntime_search'
+require 'highline'
+require 'optparse'
+
+options = {}
+
+optparse = OptionParser.new do |opts|
+  opts.banner = 'Usage: popcorn [options] <search>'
+
+  opts.on('-y', '--auto', 'Pick best match automatically') do
+    options[:auto] = true
+  end
+
+  opts.on('-v', '--version', 'Print version and exit') do
+    puts "popcorn v#{PopcorntimeSearch::VERSION}"
+    exit
+  end
+
+  opts.on('-h', '--help', 'Show this message') do
+    puts opts
+    exit
+  end
+end.parse!
+
+# Join arguments to create the search term
+options[:search] = optparse.join(' ')
+
+begin
+  cli = HighLine.new
+  HighLine.colorize_strings
+
+  if options[:search].empty?
+    cli.say 'Please type a search'.red
+    exit
+  end
+
+  cli.say options[:search].green
+rescue Interrupt, EOFError
+  cli.say 'Interrupted!'.red
+rescue SocketError
+  cli.say "Couldn't perform action. Are you online?".red
+end
