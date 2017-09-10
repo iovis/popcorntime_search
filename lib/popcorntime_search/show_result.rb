@@ -14,13 +14,13 @@ module PopcorntimeSearch
     private
 
     def build_links
-      episode = self.class.get("/#{@imdb}")['episodes'].find do |episode|
+      episode_links = self.class.get("/#{@imdb}")['episodes'].find do |episode|
         episode['season'] == @season && episode['episode'] == @episode
       end
 
       links_list = []
 
-      episode['torrents'].each do |quality, info|
+      episode_links['torrents'].each do |quality, info|
         next if quality == '0'
         links_list << Link.new(title: "#{@title} #{@season}x#{@episode.to_s.rjust(2, '0')}",
                                magnet: info['url'],

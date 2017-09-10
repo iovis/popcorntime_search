@@ -1,6 +1,7 @@
 module PopcorntimeSearch
   class Link
-    attr_accessor :title, :filename, :size, :magnet, :seeders, :leechers, :language, :quality, :provider
+    attr_accessor :title, :size, :magnet, :seeders, :leechers, :language, :quality, :provider
+    attr_writer :filename
 
     def initialize(title:, filename: nil, size: nil, magnet:, seeders:, leechers:, language:, quality:, provider:)
       @title    = title
