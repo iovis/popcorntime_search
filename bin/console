@@ -9,6 +9,8 @@ require 'pry'
 include FactoryGirl::Syntax::Methods
 FactoryGirl.find_definitions
 
-search = build(:search)
+# search = build(:search)
+# movie = build(:movie_result)
+show = build(:show_result)
 
 Pry.start
