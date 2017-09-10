@@ -54,7 +54,20 @@ begin
     end
   end
 
-  say result
+  # Choose link
+  links = result.links.sort.reverse  # Sort by number of seeds desc
+
+  if options[:auto]
+    link = links.first
+  else
+    say "Choose a link for #{result.to_s.blue}:".yellow
+    link = choose(*links) do |menu|
+      menu.default = '1'
+      menu.select_by = :index_or_name
+    end
+  end
+
+  say link.magnet
 rescue Interrupt, EOFError
   say 'Interrupted!'.red
 rescue SocketError
