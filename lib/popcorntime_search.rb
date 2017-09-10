@@ -1,4 +1,5 @@
 require 'popcorntime_search/helpers'
+require 'popcorntime_search/link'
 require 'popcorntime_search/movie_result'
 require 'popcorntime_search/search'
 require 'popcorntime_search/show_result'
