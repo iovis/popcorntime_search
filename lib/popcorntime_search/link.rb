@@ -25,6 +25,10 @@ module PopcorntimeSearch
       string
     end
 
+    def filename
+      @filename ||= parsed_hash['dn'].first
+    end
+
     def info_hash
       @info_hash ||= extract_info_hash
     end
