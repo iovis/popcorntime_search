@@ -2,11 +2,12 @@ module PopcorntimeSearch
   class ShowResult < MovieResult
     base_uri "#{BASE_URL}/show/"
 
-    attr_accessor :title, :year, :imdb, :season, :episode
+    attr_accessor :season, :episode
 
     def initialize(result, season, episode)
       super(result)
 
+      @kind    = :show
       @season  = season
       @episode = episode
     end
@@ -14,7 +15,7 @@ module PopcorntimeSearch
     private
 
     def build_links
-      episode_links = self.class.get("/#{@imdb}")['episodes'].find do |episode|
+      episode_links = self.class.get("/#{@imdb_id}")['episodes'].find do |episode|
         episode['season'] == @season && episode['episode'] == @episode
       end
 

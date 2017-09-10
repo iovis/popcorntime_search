@@ -5,12 +5,14 @@ module PopcorntimeSearch
     include HTTParty
     base_uri "#{BASE_URL}/movie/"
 
-    attr_accessor :title, :year, :imdb
+    attr_accessor :title, :year, :imdb_id
+    attr_reader :kind
 
     def initialize(result)
-      @title = result['title']
-      @year  = result['year']
-      @imdb  = result['imdb_id']
+      @title   = result['title']
+      @year    = result['year']
+      @imdb_id = result['imdb_id']
+      @kind    = :movie
     end
 
     def to_s
@@ -24,7 +26,7 @@ module PopcorntimeSearch
     private
 
     def build_links
-      self.class.get("/#{@imdb}")['torrents'].each_with_object([]) do |(language, links), links_list|
+      self.class.get("/#{@imdb_id}")['torrents'].each_with_object([]) do |(language, links), links_list|
         links.each do |quality, info|
           links_list << Link.new(title: @title,
                                  size: info['filesize'],
