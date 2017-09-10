@@ -26,15 +26,18 @@ module PopcorntimeSearch
     end
 
     def info_hash
-      @info_hash ||= extract_hash
+      @info_hash ||= extract_info_hash
     end
 
     private
 
-    def extract_hash
-      # Extract magnet properties to a Hash and then parse the sha1 info hash
-      raw_hash = @magnet[/(xt.*?)&/, 1]  # extract the xt property
-      raw_hash.split(':').last.downcase
+    def extract_info_hash
+      # xt=urn:<hash_type>:<info_hash>
+      parsed_hash['xt'].first.split(':').last.downcase
+    end
+
+    def parsed_hash
+      @parsed_hash ||= CGI.parse(magnet.sub('magnet:?', ''))
     end
   end
 end
