@@ -9,4 +9,3 @@ FactoryGirl.define do
     initialize_with { new(result) }
   end
 end
-

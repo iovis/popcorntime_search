@@ -1,8 +1,9 @@
 module PopcorntimeSearch
   class Link
-    attr_accessor :filename, :size, :magnet, :seeders, :leechers, :language, :quality, :provider
+    attr_accessor :title, :filename, :size, :magnet, :seeders, :leechers, :language, :quality, :provider
 
-    def initialize(filename:, size:, magnet:, seeders:, leechers:, language:, quality:, provider:)
+    def initialize(title:, filename: nil, size: nil, magnet:, seeders:, leechers:, language:, quality:, provider:)
+      @title    = title
       @filename = filename
       @size     = size
       @magnet   = magnet
@@ -18,7 +19,10 @@ module PopcorntimeSearch
     end
 
     def to_s
-      "#{@filename} [#{@quality}][#{@language.upcase}][#{@provider}] (#{@size}) - [#{@seeders.to_s.green}/#{@leechers.to_s.red}]"
+      string = "#{@filename || @title} [#{@quality}][#{@language.upcase}][#{@provider}]"
+      string << " (#{@size})" if @size
+      string << " - [#{@seeders.to_s.green}/#{@leechers.to_s.red}]"
+      string
     end
 
     def info_hash
