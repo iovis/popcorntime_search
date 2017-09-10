@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'popcorntime_search'
-require 'highline'
+require 'highline/import'
 require 'optparse'
 
 options = {}
@@ -28,17 +28,15 @@ end.parse!
 options[:search] = optparse.join(' ')
 
 begin
-  cli = HighLine.new
   HighLine.colorize_strings
 
   if options[:search].empty?
-    cli.say 'Please type a search'.red
+    say 'Please type a search'.red
     exit
   end
 
-  cli.say options[:search].green
 rescue Interrupt, EOFError
-  cli.say 'Interrupted!'.red
+  say 'Interrupted!'.red
 rescue SocketError
-  cli.say "Couldn't perform action. Are you online?".red
+  say "Couldn't perform action. Are you online?".red
 end
