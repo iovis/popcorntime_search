@@ -55,7 +55,12 @@ begin
   end
 
   # Choose link
-  links = result.links.sort.reverse  # Sort by number of seeds desc
+  if result.links.empty?
+    say 'No results found'.red
+    exit
+  end
+
+  links = result.links.sort.reverse # Sort by number of seeds desc
 
   if options[:auto]
     link = links.first
