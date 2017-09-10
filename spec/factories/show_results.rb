@@ -10,5 +10,9 @@ FactoryGirl.define do
     episode 3
 
     initialize_with { new(result, season, episode) }
+
+    trait :nonexistent do
+      episode 20
+    end
   end
 end

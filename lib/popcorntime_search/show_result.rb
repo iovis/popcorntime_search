@@ -18,9 +18,9 @@ module PopcorntimeSearch
         episode['season'] == @season && episode['episode'] == @episode
       end
 
-      links_list = []
+      return [] unless episode_links
 
-      episode_links['torrents'].each do |quality, info|
+      episode_links['torrents'].each_with_object([]) do |(quality, info), links_list|
         next if quality == '0'
         links_list << Link.new(title: "#{@title} #{@season}x#{@episode.to_s.rjust(2, '0')}",
                                magnet: info['url'],
@@ -30,8 +30,6 @@ module PopcorntimeSearch
                                quality: quality,
                                provider: info['provider'])
       end
-
-      links_list
     end
   end
 end
