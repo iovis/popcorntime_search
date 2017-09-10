@@ -19,7 +19,7 @@ module PopcorntimeSearch
     end
 
     def to_s
-      string = "#{filename || title} [#{quality}][#{language.upcase}][#{provider}]"
+      string = "#{title} [#{quality}][#{language.upcase}][#{provider}]"
       string << " (#{size})" if size
       string << " - [#{seeders.to_s.green}/#{leechers.to_s.red}]"
       string

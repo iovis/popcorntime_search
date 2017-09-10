@@ -24,4 +24,47 @@ RSpec.describe PopcorntimeSearch::Link do
       end
     end
   end
+
+  describe '#to_s' do
+    before :each do
+      require 'highline'
+      HighLine.colorize_strings
+    end
+
+    it 'includes the title' do
+      expect(subject.to_s).to include 'The Godfather'
+    end
+
+    it 'includes the quality' do
+      expect(subject.to_s).to include '[1080p]'
+    end
+
+    it 'includes the language' do
+      expect(subject.to_s).to include '[EN]'
+    end
+
+    it 'includes the provider' do
+      expect(subject.to_s).to include '[YTS]'
+    end
+
+    it 'includes the seeders' do
+      expect(subject.to_s).to include '1007'
+    end
+
+    it 'includes the leechers' do
+      expect(subject.to_s).to include '132'
+    end
+
+    context 'when given a size' do
+      it 'includes the size' do
+        expect(subject.to_s).to include '(2.40 GB)'
+      end
+    end
+
+    context 'when not given a size' do
+      it 'does not includes the size' do
+        expect(show_link.to_s).not_to match(/\s\(\d+\.\d+ (K|M|G)B\)/)
+      end
+    end
+  end
 end
