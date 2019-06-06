@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Search the popcorn-api https://github.com/popcorn-official/popcorn-api}
   # spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = 'https://github.com/iovis9/popcorntime_search'
+  spec.homepage      = 'https://github.com/iovis/popcorntime_search'
   spec.license       = 'MIT'
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
