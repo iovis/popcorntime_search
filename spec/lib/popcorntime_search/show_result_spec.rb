@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe PopcorntimeSearch::ShowResult do
+describe PopcorntimeSearch::ShowResult do
   subject                   { build(:show_result) }
   let(:nonexistent_episode) { build(:show_result, :nonexistent) }
   let(:base_url)            { PopcorntimeSearch::BASE_URL }

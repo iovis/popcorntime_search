@@ -6,13 +6,13 @@ FactoryBot.define do
       'imdb_id' => 'tt0944947'
     }}
 
-    season  6
-    episode 3
+    season  { 6 }
+    episode { 3 }
 
     initialize_with { new(result, season, episode) }
 
     trait :nonexistent do
-      episode 20
+      episode { 20 }
     end
   end
 end
