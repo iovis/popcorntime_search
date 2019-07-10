@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :search, class: PopcorntimeSearch::Search do
     search 'game of thrones s06e03'
     initialize_with { new(search) }

@@ -6,8 +6,8 @@ require 'popcorntime_search'
 require 'pry'
 
 # Init
-include FactoryGirl::Syntax::Methods
-FactoryGirl.find_definitions
+include FactoryBot::Syntax::Methods
+FactoryBot.find_definitions
 
 # search = build(:search)
 # movie = build(:movie_result)

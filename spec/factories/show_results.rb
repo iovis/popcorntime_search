@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :show_result, class: PopcorntimeSearch::ShowResult do
     result {{
       'title'   => 'Game of Thrones',

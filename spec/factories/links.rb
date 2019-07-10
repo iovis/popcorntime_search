@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :link, class: PopcorntimeSearch::Link do
     link {{
       title: 'The Godfather',
