@@ -19,7 +19,7 @@ module PopcorntimeSearch
     end
 
     def <=>(other)
-      @seeders <=> other.seeders
+      quality <=> other.quality
     end
 
     def to_s
