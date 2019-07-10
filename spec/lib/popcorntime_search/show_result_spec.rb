@@ -1,15 +1,17 @@
 require 'spec_helper'
 
 describe PopcorntimeSearch::ShowResult do
-  subject                   { build(:show_result) }
-  let(:nonexistent_episode) { build(:show_result, :nonexistent) }
-  let(:base_url)            { PopcorntimeSearch::BASE_URL }
+  let(:base_url) { PopcorntimeSearch::BASE_URL }
+
+  subject { build(:show_result) }
 
   describe '#links' do
-    it 'should return a list of Links' do
+    before :each do
       stub_request(:get, "#{base_url}/show/tt0944947")
         .to_return(File.new('spec/support/http_stubs/show_detail.http'))
+    end
 
+    it 'should return a list of Links' do
       expect(subject.links.count).to eq 3
       expect(subject.links).to all be_a PopcorntimeSearch::Link
 
@@ -20,11 +22,10 @@ describe PopcorntimeSearch::ShowResult do
     end
 
     context 'when given an nonexistent episode' do
-      it 'should return an empty list' do
-        stub_request(:get, "#{base_url}/show/tt0944947")
-          .to_return(File.new('spec/support/http_stubs/show_detail.http'))
+      subject { build(:show_result, :nonexistent).links }
 
-        expect(nonexistent_episode.links).to eq []
+      it 'should return an empty list' do
+        is_expected.to be_empty
       end
     end
   end
