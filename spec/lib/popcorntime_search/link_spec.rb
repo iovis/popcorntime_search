@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe PopcorntimeSearch::Link do
+describe PopcorntimeSearch::Link do
   subject         { build(:link) }
   let(:show_link) { build(:link, :show) }
 

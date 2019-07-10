@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe PopcorntimeSearch::MovieResult do
+describe PopcorntimeSearch::MovieResult do
   subject        { build(:movie_result) }
   let(:base_url) { PopcorntimeSearch::BASE_URL }
 
