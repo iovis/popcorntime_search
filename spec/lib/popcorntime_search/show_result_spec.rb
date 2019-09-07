@@ -12,13 +12,13 @@ describe PopcorntimeSearch::ShowResult do
     end
 
     it 'should return a list of Links' do
-      expect(subject.links.count).to eq 3
+      expect(subject.links.count).to eq 4
       expect(subject.links).to all be_a PopcorntimeSearch::Link
 
-      link = subject.links.first
+      link = subject.links.last
       expect(link.title).to    eq 'Game of Thrones 6x03'
       expect(link.language).to eq 'en'
-      expect(link.quality).to  eq '1080p'
+      expect(link.quality).to  eq '720p'
     end
 
     context 'when given an nonexistent episode' do
@@ -26,6 +26,15 @@ describe PopcorntimeSearch::ShowResult do
 
       it 'should return an empty list' do
         is_expected.to be_empty
+      end
+    end
+
+    context 'when given a season' do
+      subject { build(:show_result, :full_season).links }
+
+      it 'returns a full season' do
+        is_expected.to all be_a PopcorntimeSearch::Link
+        expect(subject.count).to eq 10
       end
     end
   end

@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'factory_girl'
+require 'factory_bot'
 require 'popcorntime_search'
 require 'pry'
 
@@ -11,6 +11,7 @@ FactoryBot.find_definitions
 
 # search = build(:search)
 # movie = build(:movie_result)
-show = build(:show_result)
+# show = build(:show_result)
+season = build(:show_result, :full_season)
 
 Pry.start

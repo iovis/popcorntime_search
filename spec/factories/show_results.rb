@@ -14,5 +14,9 @@ FactoryBot.define do
     trait :nonexistent do
       episode { 20 }
     end
+
+    trait :full_season do
+      episode { nil }
+    end
   end
 end
