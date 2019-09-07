@@ -27,6 +27,14 @@ describe PopcorntimeSearch::Search do
                     'Mr. Robot', 2, 1, :show
 
     it_behaves_like 'a search',
+                    'Mr. Robot S02',
+                    'Mr. Robot', 2, nil, :show
+
+    it_behaves_like 'a search',
+                    'Mr. Robot s2',
+                    'Mr. Robot', 2, nil, :show
+
+    it_behaves_like 'a search',
                     "It's Always Sunny in Philadelphia s04e01",
                     "It's Always Sunny in Philadelphia", 4, 1, :show
 

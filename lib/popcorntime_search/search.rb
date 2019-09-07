@@ -15,7 +15,7 @@ module PopcorntimeSearch
       @season  = season.to_i if season
       @episode = episode.to_i if episode
 
-      @kind = @season && @episode ? :show : :movie
+      @kind = @season ? :show : :movie
     end
 
     def results
