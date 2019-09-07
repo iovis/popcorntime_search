@@ -34,5 +34,9 @@ module PopcorntimeSearch
     rescue SocketError
       @results_found = false
     end
+
+    def full_season?
+      @season && !@episode
+    end
   end
 end

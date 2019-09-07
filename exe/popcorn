@@ -62,17 +62,20 @@ begin
 
   links = result.links.sort.reverse # Sort by number of seeds desc
 
-  if options[:auto]
-    link = links.first
+  if search.full_season?
+    say links.map(&:magnet).join("\n")
+  elsif options[:auto]
+    say links.first.magnet
   else
     say "Choose a link for #{result.to_s.blue}:".yellow
+
     link = choose(*links) do |menu|
       menu.default = '1'
       menu.select_by = :index_or_name
     end
-  end
 
-  say link.magnet
+    say link.magnet
+  end
 rescue Interrupt, EOFError
   say 'Interrupted!'.red
 rescue SocketError
